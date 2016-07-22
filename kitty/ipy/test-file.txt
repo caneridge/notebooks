@@ -1,0 +1,8 @@
+
+ROLE1:
+  # Used for testing
+  C:\Users\brian.jones\Desktop\ipy\template1.txt:
+    nickname: file1               # This name appears in the log
+    values:
+      read_write_db: RWDB
+      read_write_password: RWDB-PW

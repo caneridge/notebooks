@@ -1,0 +1,7 @@
+---
+ROLE1:
+  - file: template1.txt
+    nickname: file1
+    values:
+      read_write_db: RWDB
+      read_write_password: RWDB-PW
