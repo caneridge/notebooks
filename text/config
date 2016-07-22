@@ -1,0 +1,30 @@
+# Generate key
+# ssh-keygen -t rsa -C comment -f ~/.ssh/id_rsa_file -N ""
+# .ssh                  700
+# .ssh/authorized_keys  600
+# .ssh/id_rsa           400
+# .ssh/id_rsa.pub       400
+#
+# Login via password
+#     ssh -o PreferredAuthentications=password account@HOSTNAMEORIP
+
+# git clone bitbucket:caneridge/repository.git repository
+Host bitbucket
+  HostName bitbucket.org
+  User git
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/id_rsa_bitbucket
+
+Host putty_*
+  IdentityFile ~/.ssh/id_rsa_brian_ste.ppk
+  User churchill\brian.jones
+
+Host *
+  # Don't disconnect sessions
+  ServerAliveCountMax 40
+  ServerAliveInterval 60
+  StrictHostKeyChecking no
+  User churchill\brian.jones
+  IdentityFile ~/.ssh/id_rsa_brian_ste
+  PreferredAuthentications publickey
+  PasswordAuthentication yes

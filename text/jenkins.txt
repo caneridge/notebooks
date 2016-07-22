@@ -1,0 +1,140 @@
+ITE
+    JENKINS_HOME:
+        /backup/10.20.1.21/jenkins/jenkins_home
+    CODE WORKSPACE:
+        /backup/10.20.1.21/jenkins/jenkins_home/workspace
+
+Vagrant
+    vagrant init box-cutter/centos67; vagrant up --provider virtualbox
+
+miniconda
+    HTTPSConnectionPool(host='cdwinvctr01.cdi.com', port=443)
+    telnet cdwinvctr01.cdi.com 443
+
+SVN
+    https://tools.cdihorseracing.com/vcs/applications/branches/fundingtomcat/
+    https://tools.cdihorseracing.com/vcs/applications/
+    https://tools.cdihorseracing.com/vcs/Operations/Scripts_and_Manifests/
+
+pyvmomi
+    install from source
+
+    pip install pyvmomi --target ./local_lib
+
+    use sys
+    sys.path.append(r'local_lib')
+
+
+Funding VM
+    create new vm
+    run puppet code
+    snapshot
+    revert to snapshot script
+    jenkins job to deploy
+
+TS-Tomcat rpm
+    Examine installation paths
+    build new rpm
+
+ANSIBLE SETUP
+
+sudo yum install ansible
+
+ssh-agent
+
+SSH_AUTH_SOCK=/tmp/ssh-xLGDbD1476/agent.1476; export SSH_AUTH_SOCK;
+SSH_AGENT_PID=1477; export SSH_AGENT_PID;
+
+p10-ts-dev8-fund03
+    /etc/ts-roles.conf:
+    ts_relmanager=true
+
+
+VAGRANT SETUP
+
+    control host
+        pip install ansible
+
+    slave
+        # ssh to vagrant slave
+
+        vagrant ssh-config
+
+        HostName 127.0.0.1
+        User vagrant
+        Port 2222
+        UserKnownHostsFile /dev/null
+        StrictHostKeyChecking no
+        PasswordAuthentication no
+        IdentityFile /Users/brian.jones/Desktop/vagrant/funding/.vagrant/machines/default/virtualbox/private_key
+        IdentitiesOnly yes
+        LogLevel FATAL
+
+        ssh vagrant@127.0.0.1 -p 2222 -i /Users/brian.jones/Desktop/vagrant/funding/.vagrant/machines/default/virtualbox/private_key
+
+    ~/Desktop/vagrant/funding (= playbooks)
+    ~/Desktop/vagrant/funding/hosts
+        ---
+        testserver ansible_ssh_host=127.0.0.1 ansible_ssh_port=2222 ansible_ssh_user=vagrant ansible_ssh_private_key_file=/Users/brian.jones/Desktop/vagrant/funding/.vagrant/machines/default/virtualbox/private_key
+        ---
+
+    cd ~/Desktop/vagrant/
+    ansible testserver -i hosts -m ping
+
+    ~/Desktop/vagrant/funding/ansible.cfg
+        ---
+        [defaults]
+        hostfile = hosts
+        remote_user = vagrant
+        private_key_file = /Users/brian.jones/Desktop/vagrant/funding/.vagrant/machines/default/virtualbox/private_key
+        host_key_checking = False
+        ---
+
+    # hosts simplifies to:
+    ~/Desktop/vagrant/funding/hosts
+        ---
+        testserver ansible_ssh_host=127.0.0.1 ansible_ssh_port=2222
+        ---
+
+    cd ~/Desktop/vagrant/funding
+    ansible testserver -m ping
+
+JENKINS2
+
+/home/relmanager/f1495/ansible.cfg
+    ---
+    [defaults]
+    hostfile = hosts
+    remote_user = relmanager
+    private_key_file = /home/relmanager/.ssh/id_rsa
+    host_key_checking = False
+    ---
+
+cd /home/relmanager/f1495/
+git clone sandbox
+/home/relmanager/f1495/mc/bin/ansible fund03 -m ping
+
+ansible-playbook ts-features.yml
+/home/relmanager/f1495/mc/bin/ansible-playbook ts-tomcat.yml
+/home/relmanager/f1495/mc/bin/ansible-playbook ts-funding.yml
+
+    - name: Add mysql connector jar
+      copy: >
+        src=/home/relmanager/f1495/mysql-connector-java-5.1.37.jar
+        dest=/usr/local/tomcat/lib
+        mode=644
+        owner="tomcat:tomcat"
+
+GIT
+
+git clone git@github.cdinteractive.com:brian-jones/sandbox.git
+git remote add origin2 git@github.cdinteractive.com:brian-jones/sandbox.git
+git push -u origin2 master
+
+
+curl -s http://p10-ts-dev8-fund03:8080/funding/creditcard/monitor/gatewayStatus
+http://p10-ts-dev8-fund03:8080/funding/paypal/monitor/status
+http://p10-ts-dev8-fund03:8080/funding/monitor/dbro
+http://p10-ts-dev8-fund03:8080/funding/monitor/dbrw
+
+ansible-galaxy

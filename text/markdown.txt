@@ -1,0 +1,71 @@
+Markdown.txt
+
+HEADERS
+
+# H1
+## H2
+### H3
+#### H4
+##### H5
+###### H6
+
+H1
+==
+
+H2
+--
+
+WORD FORMATTING
+
+*italics*
+_italics_
+**bold**
+__bold__
+~~strikethrough~~
+
+> Blockquote
+
+LISTS
+
+1. First ordered list item
+2. Another item
+⋅⋅* Indented Unordered sub-list.
+1. Actual numbers don't matter, just that it's a number
+⋅⋅1. Indented Ordered sub-list as i.
+4. And another item.
+
+⋅⋅⋅One or mote dots to indent to list text
+
+⋅⋅⋅To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅
+⋅⋅⋅Note that this line is separate, but within the same paragraph.⋅⋅
+⋅⋅⋅(This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
+
+* Unordered list
+- Unordered list
++ Unordered list
+
+LINKS
+
+[Rendered text of link](https://www.google.com)
+[I'm a relative reference to a repository file](../blob/master/LICENSE)
+
+SYNTAX HIGHLIGHTING
+
+Blaw blaw `some command` blaw blaw
+
+```python
+s = "Python syntax highlighting"
+print s
+```
+
+TABLES
+
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
+Outer pipes optional
+At least --- per header

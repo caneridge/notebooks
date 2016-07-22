@@ -1,0 +1,6 @@
+osx.txt
+
+Enable key repeat
+
+  defaults write -g ApplePressAndHoldEnabled -bool false
+  reboot

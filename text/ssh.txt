@@ -1,0 +1,19 @@
+ssh.txt
+
+GUIDES
+
+    https://developer.github.com/guides/using-ssh-agent-forwarding/
+    http://www.unixwiz.net/techtips/ssh-agent-forwarding.html
+
+ANSIBLE SSH
+
+    ssh-keygen -t rsa -C "your.email - Ansible" -f ~/.ssh/id_rsa_ansible -N ""
+
+LOGIN WITH PW
+
+    ssh -o PreferredAuthentications=password -l root 10.20.12.11
+
+
+SSH VERSION
+
+    ssh -V

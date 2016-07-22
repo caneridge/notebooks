@@ -1,0 +1,14 @@
+linux.txt
+
+sed
+  One liner commands
+  http://sed.sourceforge.net/sed1line.txt
+
+xargs
+   find . -type f | xargs -I {} sh -c "echo {}; rpm2cpio {} | cpio -it"
+
+loop through file
+  while read line
+  do
+    echo $line
+  done <FILE
